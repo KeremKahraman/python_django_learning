@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, response
 from django.urls import reverse
 
+
 monthly_challenges = {
     "january": "January Text",
     "february": "February Text",
@@ -29,12 +30,7 @@ def index(request):
         list_items += f"<li><a href=\"{month_path}\">{capitalized_month}</a></li>"
         list_items += "<tr/>"
 
-    response_data = f"""
-        <ul>
-            {list_items}
-        </ul>
-
-    """
+    response_data = f"<ul>{list_items}</ul>"
 
     return HttpResponse(response_data)
 
@@ -43,8 +39,7 @@ def monthly_challenge(request, month):
     
     try:
         challenge_text = monthly_challenges[month]
-        response_data = f"<h1>{challenge_text}</h1>"
-        return HttpResponse(response_data)
+        return render(request, "challenges/challenge.html")
     except:
         return HttpResponseNotFound("<h1>No URL found</h1>") 
     

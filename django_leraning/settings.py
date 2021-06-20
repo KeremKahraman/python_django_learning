@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'challenges',               # django officially knows our app now
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,8 +55,10 @@ ROOT_URLCONF = 'django_leraning.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [
+            # BASE_DIR / "challenges" / "templates" 
+        ],
+        'APP_DIRS': True,               # uses app directories but you need to officially register your app to installed apps conf
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
