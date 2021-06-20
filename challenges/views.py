@@ -39,7 +39,9 @@ def monthly_challenge(request, month):
     
     try:
         challenge_text = monthly_challenges[month]
-        return render(request, "challenges/challenge.html")
+        return render(request, "challenges/challenge.html", {
+            "challenge_text": challenge_text
+        })
     except:
         return HttpResponseNotFound("<h1>No URL found</h1>") 
     
